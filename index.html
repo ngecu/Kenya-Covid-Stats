@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Kenyan Stats</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/countupjs/1.8.5/countUp.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://kit.fontawesome.com/0cc3d8b950.js" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+</head>
+<style>
+    body{
+        background-color:#3c4042; 
+        color: white;
+    }
+    .mypanel{
+        border: solid;
+        display: flex;
+    }
+    .Value{
+        margin: 20%;
+    }
+    .row{
+        display: flex  !important;
+        flex-wrap: wrap !important;
+    }
+    .container h1{
+        text-align: center;
+    }
+    p{
+        font-size: 50px;
+    }
+    #dateUpdate{font-size: 12px;margin: 0;}
+
+    .row .col.m4{
+      min-width: 400px;
+    }
+    
+</style>
+
+<body>
+<div class="container">
+    <h1>Kenya Covid 19 Stats</h1>
+    
+    <div class="row">
+        <div class="col s4 m4">
+           
+          <div class="card yellow accent-4 " style="border-bottom: solid white 10px;">
+            <div class="card-content white-text" >
+              <span class="card-title">Confirmed Cases</span>
+              <p id="confirmedValue" class="Value">0 </p>
+            </div>
+            <div class="card-action">
+                <a class="btn-floating pulse  green lighten-5"> </a> live
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="col s4 m4">
+            <div class="card light-green accent-4" style="border-bottom: solid white 10px;">
+              <div class="card-content white-text">
+                <span class="card-title">Recovered</span>
+               <p id="recoveredValue">0</p>
+              </div>
+              <div class="card-action">
+                <a class="btn-floating pulse"><i class="fab fa-creative-commons-sampling-plus"></i> </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s4 m4">
+            <div class="card red accent-4" style="border-bottom: solid white 10px;">
+              <div class="card-content white-text">
+                <span class="card-title">Deaths</span>
+               <p id="deathsValue">0</p> 
+              </div>
+              <div class="card-action">
+                <a class="btn-floating pulse"><i class="fas fa-viruses"></i> </a>
+              </div>
+            </div>
+          </div>
+      </div>
+      <h3 id="dateUpdate" style="margin-left: 35px;"></h3>
+
+      <style>
+        #other{
+         
+          display: flex;
+          flex-wrap: wrap;
+          
+          
+        }
+        #other #chart{
+          width: 620px;
+          margin: 0 10px;
+          height: 400px;
+          
+        }
+        #other #mapid{
+          width: 620px;
+          margin: 0 10px;
+          height: 400px;
+          background-image:url('https://ewscripps.brightspotcdn.com/dims4/default/55e59a6/2147483647/strip/true/crop/1280x720+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F9b%2F1c%2Fd6365aa54b5687a3cb1386a180db%2Fupdate-coronavirus-colorado-live-blog-covid19.png') ;
+          background-size: cover;
+        }
+        
+        #other #chart canvas{
+          width: 100%;
+          height: 100%;
+        }
+        footer{
+          position: fixed;
+          bottom: 0;
+          width: 100vw;
+          text-align: center;
+        }
+        @media (max-width:770px) {
+    .container {
+        margin:  0 10%;
+    }
+}
+      </style>
+      <div id="other">
+        <div id="chart">
+          <canvas id="myChart"></canvas>
+        </div>
+        
+        <div id="mapid"> </div>
+      </div>
+      
+    </div>
+          
+      <footer>DevNgecu &copy; 2020.All Rights Reserved | Privacy Policy</footer>
+
+    <script>
+        
+
+        window.onload = function() {
+
+        
+        fetch('https://covid19.mathdro.id/api/countries/KE')
+            // Replace ./data.json with your JSON feed
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            // Work with JSON data here
+            
+            var confirmed = new CountUp("confirmedValue", 0,data.confirmed.value, 0, 2.5);
+          confirmed.start();
+
+          var recovered = new CountUp("recoveredValue", 0,data.recovered.value, 0, 2.5);
+          recovered.start();
+
+          var deaths = new CountUp("deathsValue", 0,data.deaths.value, 0, 2.5);
+          deaths.start();
+            
+        })
+        .catch(err => {
+            // Do something for an error here
+        })
+        
+        
+          
+          
+        }
+        </script>
+        <script>
+           fetch('https://covid19.mathdro.id/api/countries/KE')
+           .then(response => {
+             return response.json();
+           })
+           .then(dataDate => {
+             console.log(dataDate.lastUpdate);
+             var d = new Date(dataDate.lastUpdate);
+             var dateUpdate = document.querySelector('#dateUpdate');
+             dateUpdate.innerHTML = "Last Update : " + d.toDateString();
+           })
+           
+        </script>
+    <script src="chart.js"></script>
+</body>
+</html>
