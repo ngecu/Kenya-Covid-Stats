@@ -13,7 +13,7 @@ var myChart = new Chart(ctx, {
     
     type: 'bar',
     data: {
-        labels: ['Confrimed', 'Deaths', 'Recovered'],
+        labels: ['Confrimed', 'Recovered', 'Deaths'],
         datasets: [{
             label: 'Covid 19',
             data: [data.confirmed.value, data.recovered.value, data.deaths.value],
