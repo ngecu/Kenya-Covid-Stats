@@ -13,19 +13,21 @@ var myChart = new Chart(ctx, {
     
     type: 'bar',
     data: {
-        labels: ['Confrimed', 'Recovered', 'Deaths'],
+        labels: ['Confrimed Cases', 'Reocovered Cases', 'Deaths','Active Cases'],
         datasets: [{
             label: 'Covid 19',
-            data: [data.confirmed.value, data.recovered.value, data.deaths.value],
+            data: [data.confirmed.value, data.recovered.value, data.deaths.value,(data.confirmed.value-data.recovered.value-data.deaths.value],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)'
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
                 
             ],
             borderColor: [
                 '#ffd600',
                 'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
                 'rgba(255, 206, 86, 1)',
             ],
             borderWidth: 1
