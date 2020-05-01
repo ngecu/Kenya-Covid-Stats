@@ -45,8 +45,8 @@
 <div class="container">
     <h1>Kenya Covid 19 Stats</h1>
     
-    <div class="row">
-        <div class="col-md-4 flex-md-fill">
+    <div class="row d-flex bd-highlight">
+        <div class="col s12 m6 l4 p-2 flex-fill bd-highlight">
            
           <div class="card yellow accent-4 " style="border-bottom: solid white 10px;">
             <div class="card-content white-text" >
@@ -60,7 +60,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 flex-md-fill">
+        <div class="col s12 m6 l4 p-2 flex-fill bd-highlight">
             <div class="card light-green accent-4" style="border-bottom: solid white 10px;">
               <div class="card-content white-text">
                 <span class="card-title">Recovered</span>
@@ -72,7 +72,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 flex-md-fill">
+          <div class="col s12 m6 l4 p-2 flex-fill bd-highlight">
             <div class="card red accent-4" style="border-bottom: solid white 10px;">
               <div class="card-content white-text">
                 <span class="card-title">Deaths</span>
@@ -87,51 +87,32 @@
       <h3 id="dateUpdate" style="margin-left: 35px;"></h3>
 
       <style>
-        #other{
-         
-          display: flex;
-          flex-wrap: wrap;
-          
-          
-        }
-        #other #chart{
-          width: 620px;
-          margin: 0 10px;
-          height: 400px;
-          
-        }
-        #other #mapid{
-          width: 620px;
-          margin: 0 10px;
+        
+         #mapid{
+          width: 600px;
+          margin: 10px 10px;
           height: 400px;
           background-image:url('https://ewscripps.brightspotcdn.com/dims4/default/55e59a6/2147483647/strip/true/crop/1280x720+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2F9b%2F1c%2Fd6365aa54b5687a3cb1386a180db%2Fupdate-coronavirus-colorado-live-blog-covid19.png') ;
           background-size: cover;
+          border-radius: 50px;
         }
-        
-        #other #chart canvas{
-          width: 100%;
-          height: 100%;
-        }
+       
         footer{
           position: fixed;
           bottom: 0;
           width: 100vw;
           text-align: center;
         }
-        @media (max-width:770px) {
-    .container {
-        margin:  0 10%;
-    }
-}
+       
       </style>
     
-    <div class="row" id="other">
+    <div class="row d-flex bd-highlight" >
         
-        <div class="col-md-6 flex-md-fill" id="chart">
+        <div class="col s6 m6 l4 p-2 flex-fill bd-highlight" id="chart">
           <canvas id="myChart"></canvas>
         </div>
         
-        <div class="col-md-6 flex-md-fill" id="mapid"> </div>
+        <div class="col s6 m6 l4 p-2 flex-fill bd-highlight" id="mapid"> </div>
       </div>
       
     </div>
@@ -139,8 +120,7 @@
       <footer>DevNgecu &copy; 2020.All Rights Reserved | Privacy Policy</footer>
 
     <script>
-        
-
+  
         window.onload = function() {
 
         
@@ -185,5 +165,6 @@
            
         </script>
     <script src="chart.js"></script>
+  
 </body>
 </html>

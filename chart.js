@@ -1,4 +1,3 @@
-
 var ctx = document.getElementById('myChart').getContext('2d');
  
 fetch('https://covid19.mathdro.id/api/countries/KE')
@@ -33,6 +32,8 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive:true,
+        aspectRatio:1,
         scales: {
             yAxes: [{
                 ticks: {
