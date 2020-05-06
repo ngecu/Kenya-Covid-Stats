@@ -8,7 +8,7 @@ return response.json()
 .then(data => {
     console.log(data.confirmed.value)
 // Work with JSON data here
-var myChart = new Chart(ctx, {
+ new Chart(ctx, {
     
     type: 'bar',
     data: {
@@ -50,14 +50,6 @@ var myChart = new Chart(ctx, {
     }
 });
 
-var confirmed = new CountUp("confirmedValue", 0,data.confirmed.value, 0, 2.5);
-confirmed.start();
-
-var recovered = new CountUp("recoveredValue", 0,data.recovered.value, 0, 2.5);
-recovered.start();
-
-var deaths = new CountUp("deathsValue", 0,data.deaths.value, 0, 2.5);
-deaths.start();
 
 })
 
