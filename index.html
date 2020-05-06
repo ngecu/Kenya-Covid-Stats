@@ -131,6 +131,10 @@
         })
         .then(data => {
             // Work with JSON data here
+            var d = new Date(data.lastUpdate);
+            
+             var dateUpdate = document.querySelector('#dateUpdate');
+             dateUpdate.innerHTML = "Last Update : " + d.toDateString();
             
             var confirmed = new CountUp("confirmedValue", 0,data.confirmed.value, 0, 2.5);
           confirmed.start();
@@ -150,19 +154,6 @@
           
           
         }
-        </script>
-        <script>
-           fetch('https://covid19.mathdro.id/api/countries/KE')
-           .then(response => {
-             return response.json();
-           })
-           .then(dataDate => {
-             console.log(dataDate.lastUpdate);
-             var d = new Date(dataDate.lastUpdate);
-             var dateUpdate = document.querySelector('#dateUpdate');
-             dateUpdate.innerHTML = "Last Update : " + d.toDateString();
-           })
-           
         </script>
     <script src="chart.js"></script>
   
